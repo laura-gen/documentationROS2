@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>My Docs</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">My Docs</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#documentation-installation-and-use-of-ros2-jazzy-jalisco-on-a-windows-computer" class="nav-link">Documentation : installation and use of ROS2 Jazzy Jalisco on a Windows computer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#table-of-contents" class="nav-link">table of contents</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation-of-ubuntu-on-windows-via-wsl" class="nav-link">Installation of Ubuntu on Windows via WSL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation-of-ros2-jazzy-jalisco-on-ubuntu" class="nav-link">Installation of ROS2 Jazzy Jalisco on Ubuntu</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation-of-ur_robot_driver" class="nav-link">Installation of ur_robot_driver</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#robot-and-computer-configuration" class="nav-link">Robot and computer configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="documentation-installation-and-use-of-ros2-jazzy-jalisco-on-a-windows-computer">Documentation : installation and use of ROS2 Jazzy Jalisco on a Windows computer</h1>
+<p><br></p>
+<h2 id="table-of-contents">table of contents</h2>
+<ul>
+<li><a href="#installation-of-ubuntu-on-windows-via-wsl">Installation of Ubuntu on Windows via WSL</a></li>
+<li><a href="#installation-of-ros2-jazzy-jalisco-on-ubuntu">Installation of ROS2 Jazzy Jalisco on Ubuntu</a></li>
+<li><a href="#nstallation-of-ur-robot-driver">Installation of ur_robot_driver</a></li>
+<li><a href="#robot-and-computer-configuration">Robot and computer configuration</a></li>
+</ul>
+<p><br></p>
+<hr />
+<h2 id="installation-of-ubuntu-on-windows-via-wsl">Installation of Ubuntu on Windows via WSL</h2>
+<ul>
+<li>Open PowerShell :</li>
+</ul>
+<pre><code class="language-powershell">wsl --install
+</code></pre>
+<ul>
+<li>Restart the computer </li>
+<li>Open Ubuntu</li>
+<li>Create a default Unix user and a new password</li>
+</ul>
+<p><br></p>
+<hr />
+<h2 id="installation-of-ros2-jazzy-jalisco-on-ubuntu">Installation of ROS2 Jazzy Jalisco on Ubuntu</h2>
+<h4 id="setting-language-parameters">Setting language parameters</h4>
+<pre><code class="language-bash">locale # Make sure lines contain “en_US.UTF-8” else: 
+
+sudo apt update &amp;&amp; sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+</code></pre>
+<h4 id="installation-of-packages">Installation of packages</h4>
+<pre><code class="language-bash">sudo apt upgrade -y
+sudo apt install -y curl gnupg2 lsb-release
+</code></pre>
+<h4 id="add-ros2-gpg-key-and-repository">Add ROS2 GPG key and repository</h4>
+<pre><code class="language-bash">sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | sudo gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+echo &quot;deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main&quot; | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
+</code></pre>
+<h4 id="final-installation-of-ros2-jazzy-jalisco">Final installation of ROS2 Jazzy Jalisco</h4>
+<pre><code class="language-bash">sudo apt update # Updating the list of available packages
+sudo apt install ros-jazzy-desktop
+source /opt/ros/jazzy/setup.bash # Environment set up
+</code></pre>
+<p><br></p>
+<hr />
+<h2 id="installation-of-ur_robot_driver">Installation of ur_robot_driver</h2>
+<h5 id="installation-of-colcon-its-extensions-and-vcs">Installation of colcon, it’s extensions and vcs</h5>
+<pre><code class="language-bash">sudo apt install python3-colcon-common-extensions python3-vcstool
+</code></pre>
+<h5 id="creation-of-a-worspace">Creation of a worspace</h5>
+<pre><code class="language-bash">export COLCON_WS=~/workspace/ros_ur_driver
+mkdir -p $COLCON_WS/src
+</code></pre>
+<h5 id="clone-the-ros-2-driver-repository">Clone the ROS 2 driver repository</h5>
+<pre><code class="language-bash">cd $COLCON_WS
+git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git src/Universal_Robots_ROS2_Driver 
+</code></pre>
+<h5 id="installation-of-dependencies">Installation of dependencies</h5>
+<pre><code class="language-bash">vcs import src --skip-existing --input src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver-not-released.${ROS_DISTRO}.repos
+rosdep update #Updating the rosdep database
+rosdep install --ignore-src --from-paths src -y
+</code></pre>
+<h5 id="packages-compilation">Packages compilation</h5>
+<pre><code class="language-bash">colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+</code></pre>
+<h5 id="source-the-workspace">Source the workspace</h5>
+<pre><code class="language-bash">source install/setup.bash
+echo &quot;source $COLCON_WS/install/setup.bash&quot; &gt;&gt; ~/.bashrc #Automatically source the setup.bash script for each terminal opened
+</code></pre>
+<h5 id="in-case-of-compilation-errors">In case of compilation errors</h5>
+<pre><code class="language-bash">cd $COLCON_WS
+vcs import src --skip-existing --input src/Universal_Robots_ROS2_Driver/Universal_Robots_ROS2_Driver.${ROS_DISTRO}.repos
+rosdep update
+rosdep install --ignore-src --from-paths src -y
+</code></pre>
+<p><br></p>
+<hr />
+<h2 id="robot-and-computer-configuration">Robot and computer configuration</h2>
+<h5 id="setting-up-the-universal-robot-511-on-the-same-local-network-as-the-computer">Setting up the Universal Robot 5.11 on the same local network as the computer</h5>
+<p><strong>On the robot graphic interface:</strong>  </p>
+<ul>
+<li>Go to the menu (the three bars at top right) → Settings → System → Network  </li>
+<li>Check information about the network of the robot:  </li>
+</ul>
+<p style="padding-left: 40px;"> - Static Address is selected </p>
+<p style="padding-left: 40px;"> - IP address = 192.168.1.101</p>
+<p style="padding-left: 40px;"> - Subnet mask = 255.255.255.0</p>
+
+<p><strong>On a computer terminal</strong>, check if the computer IP address is 
+in 192.168.1.x form with the command : </p>
+<pre><code class="language-bash">hostname -I
+</code></pre>
+<p>If not : Identify Ethernet interface &lt;eth0&gt; by connecting robot and computer via ethernet cable and with the command:</p>
+<pre><code class="language-bash">ip link
+</code></pre>
+<p>Assign an IP address &lt;192.168.1.102&gt; to the computer</p>
+<pre><code class="language-bash">sudo ip addr add 192.168.1.102/24 dev &lt;eth0&gt;
+sudo ip link set dev &lt;eth0&gt; up
+</code></pre>
+<p><strong>On robot graphic interface :</strong>   </p>
+<ul>
+<li>Go to Installation → URCaps → External Control   </li>
+<li>Set Host IP with the IP of the computer &lt;192.168.1.102&gt;  </li>
+<li>Save  </li>
+</ul>
+<p><strong>On a terminal</strong>, check the connexion with the robot : </p>
+<pre><code class="language-bash">ping 192.168.1.101 #if you get an aswer, the connection is right
+</code></pre>
+<p>Then launch the driver:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install ros-jazzy-rviz2 #Installation of rviz2
+
+ros2 launch ur_robot_driver ur_control.launch.py \
+  ur_type:=ur3e \
+  robot_ip:=192.168.1.101 \
+  launch_rviz:=true
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-06-13 14:23:33.015141+00:00
+-->
