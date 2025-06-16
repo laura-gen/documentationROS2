@@ -1,5 +1,5 @@
 
-# Documentation : installation and use of ROS2 Jazzy Jalisco on a Windows computer 
+# Installation and use of ROS2 Jazzy Jalisco on a Windows computer 
 <br>
 
 ## table of contents 
