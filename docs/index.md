@@ -1,12 +1,12 @@
 
-# Installation and use of ROS2 Jazzy Jalisco on a Windows computer 
+# nstallation and use of ROS2 Jazzy Jalisco on a Windows computer 
 <br>
 
 ## table of contents 
 
 - [Installation of Ubuntu on Windows via WSL](#installation-of-ubuntu-on-windows-via-wsl)
 - [Installation of ROS2 Jazzy Jalisco on Ubuntu](#installation-of-ros2-jazzy-jalisco-on-ubuntu)
-- [Installation of ur_robot_driver](#nstallation-of-ur-robot-driver)
+- [Installation of ur_robot_driver](#installation-of-ur-robot-driver)
 - [Robot and computer configuration](#robot-and-computer-configuration)
 
 <br>
@@ -147,7 +147,7 @@ sudo ip link set dev <eth0> up
 
 **On a terminal**, check the connexion with the robot : 
 ```bash
-ping 192.168.1.101 #if you get an aswer, the connection is right
+ping 192.168.1.101 #if you get an answer, the connection is right
 ```
 
 Then launch the driver:
